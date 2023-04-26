@@ -100,19 +100,7 @@ const Content = () => {
                 column={column}
             />
             <input className='fileName' name='fileName' type='text' placeholder={'-- Input File Name Here --'} onChange={handleFileNameChange}/>
-            <button type='submit' onClick={handleClick}>Download Program</button>
-            {/* <div>
-                <div>{'include("simple.js");'}</div>
-                <div>{`for(r=0;r<${row};r++){`}</div>
-                <div>{`for(c=0;c<${column}; c++){`}</div>
-                <div>{'for(i=0;i<5;i++){'}</div>
-                <div>{'for(j=0;j<5;j++){'}</div>        
-                <div>{`addCircle(${dist_2}*i+c*${dist_3}+${Number(zcX)+Number(g93X)},${dist_2}*j+r*${dist_3}+${Number(zcY)+Number(g93Y)},${drillDia/2});`}</div>
-                <div>{`addCircle(${dist_2}*i+c*${dist_3}+${Number(dist_1)+Number(zcX)+Number(g93X)},${dist_2}*j+r*${dist_3}+${Number(dist_1)+Number(zcY)+Number(g93Y)},${drillDia/2});`}</div>
-                <div>{`addCircle(${dist_2}*i+c*${dist_3}+${Number(dist_1)+Number(zcX)+Number(g93X)},${dist_2}*j+r*${dist_3}+${Number(zcY)+Number(g93Y)},${drillDia/2});`}</div>
-                <div>{`addCircle(${dist_2}*i+c*${dist_3}+${Number(zcX)+Number(g93X)},${dist_2}*j+r*${dist_3}+${Number(dist_1)+Number(zcY)+Number(g93Y)},${drillDia/2});`}</div>
-                <div>{'}}}}'}</div>
-            </div> */}
+            <button type='submit' onClick={handleClick}>Generate Program</button>
         </div>
     );
 }

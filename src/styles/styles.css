@@ -38,7 +38,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    /* gap: 1.5rem; */
+}
+
+label{
+    margin-top: 0.4rem;
 }
 
 input{
@@ -46,6 +50,7 @@ input{
 }
 
 button{
+    margin-top: 1rem;
     height: 2rem;
     width: 20rem;
     font-weight: bolder;
@@ -53,7 +58,9 @@ button{
 }
 
 .fileName{
+    margin-top: 2rem;
     width: 20rem;
+    height: 2rem;
     text-align: center;
     font-weight: bold;
 }
