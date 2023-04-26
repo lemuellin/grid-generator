@@ -1,0 +1,32 @@
+.header{
+    font-size: 3rem;
+    text-align: center;
+}
+
+.component{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.title{
+    font-size: 1.5rem;
+}
+
+.content{
+    display: flex;
+    gap: 30px;
+}
+
+.leftSection{
+    height: 100vh;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.rightSection{
+    height: 100vh;
+    width: 60vw;
+}
