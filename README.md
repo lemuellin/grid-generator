@@ -1,5 +1,3 @@
-Tech Stack: React, Javascript
-
 This app save files using the solution from FileSaver.js.
 https://github.com/eligrey/FileSaver.js
 
