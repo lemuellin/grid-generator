@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/grid_pattern_generator/static/css/main.a757acd4.css",
+    "main.js": "/grid_pattern_generator/static/js/main.6d7668c4.js",
+    "index.html": "/grid_pattern_generator/index.html",
+    "main.a757acd4.css.map": "/grid_pattern_generator/static/css/main.a757acd4.css.map",
+    "main.6d7668c4.js.map": "/grid_pattern_generator/static/js/main.6d7668c4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a757acd4.css",
+    "static/js/main.6d7668c4.js"
+  ]
+}
