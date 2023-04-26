@@ -14,6 +14,7 @@ const Content = () => {
     const [dist_3, setDist_3] = useState('');
     const [row, setRow] = useState('');
     const [column, setColumn] = useState('');
+    const [fileName, setFileName] = useState('');
 
     const handleChange = (input) => {
         switch (input.name){
@@ -52,22 +53,35 @@ const Content = () => {
         }
     }
 
-    const handleClick = () => {
+    const handleFileNameChange = (input) => {
+        setFileName(input.target.value);
+    }
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        if(!zcX || !zcY || !g93X || !g93Y || !drillDia || !dist_1 || !dist_2 || !dist_3 || !row || !column){
+            alert('Missing parameters, all fields are required');
+            return;
+        }
         let content = 
             'include("simple.js");' + 
             `for(r=0;r<${row};r++){` +
             `for(c=0;c<${column}; c++){` +
             'for(i=0;i<5;i++){' +
             'for(j=0;j<5;j++){' +
-            `addCircle(${dist_2}*i+c*${dist_3}+${Number(zcX)+Number(g93X)},${dist_2}*j+r*${dist_3}+${Number(zcY)+Number(g93Y)},${drillDia/2});` +
-            `addCircle(${dist_2}*i+c*${dist_3}+${Number(dist_1)+Number(zcX)+Number(g93X)},${dist_2}*j+r*${dist_3}+${Number(dist_1)+Number(zcY)+Number(g93Y)},${drillDia/2});` +
-            `addCircle(${dist_2}*i+c*${dist_3}+${Number(dist_1)+Number(zcX)+Number(g93X)},${dist_2}*j+r*${dist_3}+${Number(zcY)+Number(g93Y)},${drillDia/2});` +
-            `addCircle(${dist_2}*i+c*${dist_3}+${Number(zcX)+Number(g93X)},${dist_2}*j+r*${dist_3}+${Number(dist_1)+Number(zcY)+Number(g93Y)},${drillDia/2});` +
+            `addCircle(${dist_2}*j+c*${dist_3}+${Number(zcX)+Number(g93X)},${dist_2}*i+r*${dist_3}+${Number(zcY)+Number(g93Y)},${drillDia/2});` +
+            `addCircle(${dist_2}*j+c*${dist_3}+${Number(dist_1)+Number(zcX)+Number(g93X)},${dist_2}*i+r*${dist_3}+${Number(dist_1)+Number(zcY)+Number(g93Y)},${drillDia/2});` +
+            `addCircle(${dist_2}*j+c*${dist_3}+${Number(dist_1)+Number(zcX)+Number(g93X)},${dist_2}*i+r*${dist_3}+${Number(zcY)+Number(g93Y)},${drillDia/2});` +
+            `addCircle(${dist_2}*j+c*${dist_3}+${Number(zcX)+Number(g93X)},${dist_2}*i+r*${dist_3}+${Number(dist_1)+Number(zcY)+Number(g93Y)},${drillDia/2});` +
             '}}}}';
         let blob = new Blob([content], {
             type: "text/plain;charset=utf-8"
         });
-        FileSaver.saveAs(blob, "program.js");
+
+        console.log(fileName);
+        let saveFileName = fileName ? fileName + '.js' : 'program.js'
+        
+        FileSaver.saveAs(blob, saveFileName);
     }
 
     return(
@@ -85,7 +99,8 @@ const Content = () => {
                 row={row}
                 column={column}
             />
-            <button onClick={handleClick}>Download Program</button>
+            <input className='fileName' name='fileName' type='text' placeholder={'-- Input File Name Here --'} onChange={handleFileNameChange}/>
+            <button type='submit' onClick={handleClick}>Download Program</button>
             {/* <div>
                 <div>{'include("simple.js");'}</div>
                 <div>{`for(r=0;r<${row};r++){`}</div>

@@ -52,10 +52,10 @@ function createGridPattern(x, y){
                     // 100 x 100
                     for(i = 0; i < unit_length/2; i++){
                         for(j = 0; j < unit_length/2; j++){
-                            addCircle(0 + dist_2 * i + c * dist_3 + x + gpC * gpColDist, 0 + dist_2 * j + r * dist_3 + y + gpR * gpRowDist, drillDia/2);
-                            addCircle(dist_1 + dist_2 * i + c * dist_3 + x + gpC * gpColDist, dist_1 + dist_2 * j + r * dist_3 + y + gpR * gpRowDist, drillDia/2);
-                            addCircle(dist_1 + dist_2 * i + c * dist_3 + x + gpC * gpColDist, 0 + dist_2 * j + r * dist_3 + y + gpR * gpRowDist, drillDia/2);
-                            addCircle(0 + dist_2 * i + c * dist_3 + x + gpC * gpColDist, dist_1 + dist_2 * j + r * dist_3 + y + gpR * gpRowDist, drillDia/2);   
+                            addCircle(0 + dist_2 * j + c * dist_3 + x + gpC * gpColDist, 0 + dist_2 * i + r * dist_3 + y + gpR * gpRowDist, drillDia/2);
+                            addCircle(dist_1 + dist_2 * j + c * dist_3 + x + gpC * gpColDist, dist_1 + dist_2 * i + r * dist_3 + y + gpR * gpRowDist, drillDia/2);
+                            addCircle(dist_1 + dist_2 * j + c * dist_3 + x + gpC * gpColDist, 0 + dist_2 * i + r * dist_3 + y + gpR * gpRowDist, drillDia/2);
+                            addCircle(0 + dist_2 * j + c * dist_3 + x + gpC * gpColDist, dist_1 + dist_2 * i + r * dist_3 + y + gpR * gpRowDist, drillDia/2);   
                         }
                     }  
                 }
