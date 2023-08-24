@@ -46,10 +46,8 @@ const DataInput = (props) => {
                     <div className="inputs">
                         <label htmlFor='dist_1Input'>First 4 holes: </label>
                         <input id='dist_1Input' name='dist_1' type='number' value={props.dist_1} onChange={handleChange}/>
-                        <label htmlFor='dist_2Input'>Step and Repeat - 10 x 10 grid: </label>
+                        <label htmlFor='dist_2Input'>Step and Repeat - 100 x 100 grid: </label>
                         <input id='dist_2Input' name='dist_2' type='number' value={props.dist_2} onChange={handleChange}/>
-                        <label htmlFor='dist_3Input'>Step and Repeat - 100 x 100 grid: </label>
-                        <input id='dist_3Input' name='dist_3' type='number' value={props.dist_3} onChange={handleChange}/>
                     </div>
                 <div className="title">Rows and Columns: </div>
                     <div className="inputs">
@@ -57,6 +55,8 @@ const DataInput = (props) => {
                         <input id='rowInput' name='row' type='number' value={props.row} onChange={handleChange}/>
                         <label htmlFor='columnInput'>Columns: </label>
                         <input id='columnInput' name='column' type='number' value={props.column} onChange={handleChange}/>
+                        <label htmlFor='dist_3Input'>Distance: </label>
+                        <input id='dist_3Input' name='dist_3' type='number' value={props.dist_3} onChange={handleChange}/>
                     </div>
                 <div className="title">Step and Repeats: </div>
                     <div className="inputs">
