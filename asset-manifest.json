@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/grid-generator/static/css/main.69ecfd6d.css",
-    "main.js": "/grid-generator/static/js/main.835e50b1.js",
+    "main.js": "/grid-generator/static/js/main.aa6ac9b1.js",
     "index.html": "/grid-generator/index.html",
     "main.69ecfd6d.css.map": "/grid-generator/static/css/main.69ecfd6d.css.map",
-    "main.835e50b1.js.map": "/grid-generator/static/js/main.835e50b1.js.map"
+    "main.aa6ac9b1.js.map": "/grid-generator/static/js/main.aa6ac9b1.js.map"
   },
   "entrypoints": [
     "static/css/main.69ecfd6d.css",
-    "static/js/main.835e50b1.js"
+    "static/js/main.aa6ac9b1.js"
   ]
 }
