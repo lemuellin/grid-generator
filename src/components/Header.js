@@ -3,7 +3,9 @@ import '../styles/styles.css';
 
 const Header = () => {
     return(
-        <div className="header">TCT Grid Pattern Generator</div>
+        <div className="header">
+            <h1 className='headerText'>TCT Grid Pattern Generator</h1>
+        </div>
     );
 };
 
