@@ -12,12 +12,10 @@ const Content = () => {
     const [dist_1, setDist_1] = useState('');
     const [dist_2, setDist_2] = useState('');
     const [dist_3, setDist_3] = useState('');
+    const [numX, setNumX] = useState('');
+    const [numY, setNumY] = useState('');
     const [row, setRow] = useState('');
     const [column, setColumn] = useState('');
-    const [SRRow, setSRRow] = useState('');
-    const [SRColumn, setSRColumn] = useState('');
-    const [SRRowDist, setSRRowDist] = useState('');
-    const [SRColDist, setSRColDist] = useState('');
     const [fileName, setFileName] = useState('');
     const [entry, setEntry] = useState('');
     const [exit, setExit] = useState('');
@@ -48,23 +46,17 @@ const Content = () => {
             case "dist_3":
                 setDist_3(input.value);
                 break;
+            case "numX":
+                setNumX(input.value);
+                break;
+            case "numY":
+                setNumY(input.value);
+                break;
             case "row":
                 setRow(input.value);
                 break;
             case "column":
                 setColumn(input.value);
-                break;
-            case "SRRow":
-                setSRRow(input.value);
-                break;
-            case "SRColumn":
-                setSRColumn(input.value);
-                break;
-            case "SRRowDist":
-                setSRRowDist(input.value);
-                break;
-            case "SRColDist":
-                setSRColDist(input.value);
                 break;
             case "entryExit":
                 if(input.value === 'entry'){
@@ -87,8 +79,13 @@ const Content = () => {
 
     const handleClick = (e) => {
         e.preventDefault();
-        if((!zcX || !zcY || !g93X || !g93Y || !drillDia || !dist_1 || !dist_2 || !dist_3 || !row || !column || !SRRow || !SRColumn || !SRRowDist || !SRColDist) || (!entry && !exit)){
+        if((!zcX || !zcY || !g93X || !g93Y || !drillDia || !dist_1 || !dist_2 || !dist_3 || !numX || !numY || !row || !column ) || (!entry && !exit)){
             alert('Missing parameters, all fields are required');
+            return;
+        }
+
+        if(numX % 2 !== 0 || numY % 2 !== 0){
+            alert('Base Pattern X and Y needs to be even number!');
             return;
         }
 
@@ -96,17 +93,15 @@ const Content = () => {
             // console.log('ENTRY (Version1)');
             let content = 
             'include("simple.js");' + 
-            `for(gpR = 0; gpR < ${SRRow}; gpR++){` +
-            `for(gpC = 0; gpC < ${SRColumn}; gpC++){` +
             `for(r=0;r<${row};r++){` +
             `for(c=0;c<${column}; c++){` +
-            'for(i=0;i<5;i++){' +
-            'for(j=0;j<5;j++){' +
-            `addCircle(${dist_2}*j+c*${dist_3}+(${Number(zcX)+Number(g93X)})+gpC*${SRColDist},${dist_2}*i+r*${dist_3}+${Number(zcY)+Number(g93Y)}+gpR*${SRRowDist},${drillDia/2});` +
-            `addCircle(${dist_2}*j+c*${dist_3}+(${Number(dist_1)+Number(zcX)+Number(g93X)})+gpC*${SRColDist},${dist_2}*i+r*${dist_3}+${Number(dist_1)+Number(zcY)+Number(g93Y)}+gpR*${SRRowDist},${drillDia/2});` +
-            `addCircle(${dist_2}*j+c*${dist_3}+(${Number(dist_1)+Number(zcX)+Number(g93X)})+gpC*${SRColDist},${dist_2}*i+r*${dist_3}+${Number(zcY)+Number(g93Y)}+gpR*${SRRowDist},${drillDia/2});` +
-            `addCircle(${dist_2}*j+c*${dist_3}+(${Number(zcX)+Number(g93X)})+gpC*${SRColDist},${dist_2}*i+r*${dist_3}+${Number(dist_1)+Number(zcY)+Number(g93Y)}+gpR*${SRRowDist},${drillDia/2});` +
-            '}}}}}}';
+            `for(i=0;i<${numY/2};i++){` +
+            `for(j=0;j<${numX/2};j++){` +
+            `addCircle(${2*dist_1}*j+c*${dist_3}+(${Number(zcX)+Number(g93X)}),${2*dist_1}*i+r*${dist_2}+${Number(zcY)+Number(g93Y)},${drillDia/2});` +
+            `addCircle(${2*dist_1}*j+c*${dist_3}+(${Number(dist_1)+Number(zcX)+Number(g93X)}),${2*dist_1}*i+r*${dist_2}+${Number(dist_1)+Number(zcY)+Number(g93Y)},${drillDia/2});` +
+            `addCircle(${2*dist_1}*j+c*${dist_3}+(${Number(dist_1)+Number(zcX)+Number(g93X)}),${2*dist_1}*i+r*${dist_2}+${Number(zcY)+Number(g93Y)},${drillDia/2});` +
+            `addCircle(${2*dist_1}*j+c*${dist_3}+(${Number(zcX)+Number(g93X)}),${2*dist_1}*i+r*${dist_2}+${Number(dist_1)+Number(zcY)+Number(g93Y)},${drillDia/2});` +
+            '}}}}';
             let blob = new Blob([content], {
                 type: "text/plain;charset=utf-8"
             });
@@ -118,17 +113,15 @@ const Content = () => {
             // console.log('EXIT (Version4)');
             let content = 
             'include("simple.js");' + 
-            `for(gpR = 0; gpR < ${SRRow}; gpR++){` +
-            `for(gpC = 0; gpC < ${SRColumn}; gpC++){` +
             `for(r=0;r<${row};r++){` +
             `for(c=0;c<${column}; c++){` +
-            'for(i=0;i<5;i++){' +
-            'for(j=0;j<5;j++){' +
-            `addCircle(-${dist_2}*j-c*${dist_3}-(${Number(zcX)+Number(g93X)})-gpC*${SRColDist},${dist_2}*i+r*${dist_3}+${Number(zcY)+Number(g93Y)}+gpR*${SRRowDist},${drillDia/2});` +
-            `addCircle(-${dist_2}*j-c*${dist_3}-(${Number(dist_1)+Number(zcX)+Number(g93X)})-gpC*${SRColDist},${dist_2}*i+r*${dist_3}+${Number(dist_1)+Number(zcY)+Number(g93Y)}+gpR*${SRRowDist},${drillDia/2});` +
-            `addCircle(-${dist_2}*j-c*${dist_3}-(${Number(dist_1)+Number(zcX)+Number(g93X)})-gpC*${SRColDist},${dist_2}*i+r*${dist_3}+${Number(zcY)+Number(g93Y)}+gpR*${SRRowDist},${drillDia/2});` +
-            `addCircle(-${dist_2}*j-c*${dist_3}-(${Number(zcX)+Number(g93X)})-gpC*${SRColDist},${dist_2}*i+r*${dist_3}+${Number(dist_1)+Number(zcY)+Number(g93Y)}+gpR*${SRRowDist},${drillDia/2});` +
-            '}}}}}}';
+            `for(i=0;i<${numY/2};i++){` +
+            `for(j=0;j<${numX/2};j++){` +
+            `addCircle(-${2*dist_1}*j-c*${dist_3}-(${Number(zcX)+Number(g93X)}),${2*dist_1}*i+r*${dist_2}+${Number(zcY)+Number(g93Y)},${drillDia/2});` +
+            `addCircle(-${2*dist_1}*j-c*${dist_3}-(${Number(dist_1)+Number(zcX)+Number(g93X)}),${2*dist_1}*i+r*${dist_2}+${Number(dist_1)+Number(zcY)+Number(g93Y)},${drillDia/2});` +
+            `addCircle(-${2*dist_1}*j-c*${dist_3}-(${Number(dist_1)+Number(zcX)+Number(g93X)}),${2*dist_1}*i+r*${dist_2}+${Number(zcY)+Number(g93Y)},${drillDia/2});` +
+            `addCircle(-${2*dist_1}*j-c*${dist_3}-(${Number(zcX)+Number(g93X)}),${2*dist_1}*i+r*${dist_2}+${Number(dist_1)+Number(zcY)+Number(g93Y)},${drillDia/2});` +
+            '}}}}';
             let blob = new Blob([content], {
                 type: "text/plain;charset=utf-8"
             });
@@ -151,10 +144,10 @@ const Content = () => {
                 dist_1={dist_1}
                 dist_2={dist_2}
                 dist_3={dist_3}
+                numX={numX}
+                numY={numY}
                 row={row}
                 column={column}
-                SRRow={SRRow}
-                SRColumn={SRColumn}
                 entry={entry}
                 exit={exit}
             />
